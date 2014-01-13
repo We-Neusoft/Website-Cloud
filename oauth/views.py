@@ -8,8 +8,8 @@ from django.shortcuts import render_to_response
 
 import datetime, json
 
-from apis.oauth.models import AccessToken, AuthorizationCode, Client, RedirectionUri
-from apis.oauth.forms import AuthenticationForm, InitializationForm, TokenForm
+from models import AccessToken, AuthorizationCode, Client, RedirectionUri
+from forms import AuthenticationForm, InitializationForm, TokenForm
 from we.utils.uuid_codec import decode, encode
 
 def authorize(request):

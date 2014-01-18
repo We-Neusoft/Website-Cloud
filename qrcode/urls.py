@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, url
 
-from apis.qrcode_we import views
+import views
 
 urlpatterns = patterns('',
     url(r'^small.we$', views.qr, {'size': 2}, name='small'),

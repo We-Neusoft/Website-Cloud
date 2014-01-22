@@ -10,7 +10,7 @@ import datetime, json
 
 from models import AccessToken, AuthorizationCode, Client, RedirectionUri
 from forms import AuthenticationForm, InitializationForm, TokenForm
-from we.utils.uuid_codec import decode, encode
+from libs.codec.btt import decode, encode
 
 def authorize(request):
     # 验证是否为登录表单

@@ -5,12 +5,12 @@ from django.core.context_processors import csrf
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
 import datetime, json
 
 from models import AccessToken, AuthorizationCode, Client, RedirectionUri
 from forms import AuthenticationForm, InitializationForm, TokenForm
-from libs.codec.btt import decode, encode
 
 def authorize(request):
     # 验证是否为登录表单
@@ -64,7 +64,7 @@ def authorize(request):
             code = AuthorizationCode(client=client, user=user, redirect_uri=redirect_uri, expire_time=datetime.datetime.now() + datetime.timedelta(minutes=10))
             code.save()
 
-            return callback_client(redirect_uri + '?code=' + encode(code.code), state)
+            return callback_client(redirect_uri + '?code=' + urlsafe_base64_encode(code.code.bytes), state)
         else:
             return callback_client(redirect_uri + '?error=unsupported_response_type', state), None
 
@@ -100,7 +100,7 @@ def token(request):
             code.delete()
             return error_response('invalid_grant')
 
-        return success_response(encode(token.token))
+        return success_response(urlsafe_base64_encode(token.token))
     else:
         return error_response('unsupported_grant_type')
 

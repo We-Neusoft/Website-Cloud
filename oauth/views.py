@@ -12,6 +12,8 @@ import datetime, json
 from models import AccessToken, AuthorizationCode, Client, RedirectionUri
 from forms import AuthenticationForm, InitializationForm, TokenForm
 
+"""OAuth 登录、认证、鉴权"""
+
 def authorize(request):
     # 验证是否为登录表单
     # TODO 当系统有初始化、登录以外的入口时，此处需要改进（SunFulong@2014-1-7）

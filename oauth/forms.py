@@ -9,7 +9,8 @@ class InitializationForm(forms.Form):
 
 class AuthenticationForm(forms.Form):
     action = forms.SlugField()
-    username = forms.EmailField(required=False)
+    username = forms.CharField(required=False)
+    domain = forms.CharField(required=False)
     password = forms.CharField(required=False)
 
 class TokenForm(forms.Form):

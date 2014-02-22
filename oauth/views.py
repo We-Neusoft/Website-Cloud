@@ -6,6 +6,7 @@ from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.views.decorators.csrf import csrf_exempt
 
 import datetime, json
 from uuid import UUID
@@ -76,6 +77,7 @@ def authorize(request):
         else:
             return callback_client(redirect_uri + '?error=unsupported_response_type', state), None
 
+@csrf_exempt
 def token(request):
     # 验证应用端合法性
     client = authorize_client(request.META.get('HTTP_AUTHORIZATION'))

@@ -30,6 +30,7 @@ def authorize(request):
         if issubclass(form.__class__, HttpResponse):
             return form
 
+        result.update({'name': client.name})
         request.session.set_expiry(0)
         request.session.update(form.cleaned_data)
 

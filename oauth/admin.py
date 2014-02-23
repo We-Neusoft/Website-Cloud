@@ -3,7 +3,7 @@ from django.contrib import admin
 from apis.oauth.models import AuthorizationCode, Client, RedirectionUri, AccessToken
 
 class ClientAdmin(admin.ModelAdmin):
-    list_display = ('client_id', 'encoded_client_secret', 'admin')
+    list_display = ('name', 'client_id', 'encoded_client_secret', 'admin')
 
     def encoded_client_secret(self, obj):
         return obj.client_secret.encode()

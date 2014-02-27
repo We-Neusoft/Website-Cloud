@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from apis.oauth.models import AuthorizationCode, Client, RedirectionUri, AccessToken
+from models import AuthorizationCode, Client, RedirectionUri, AccessToken
 
 class ClientAdmin(admin.ModelAdmin):
     list_display = ('name', 'client_id', 'encoded_client_secret', 'admin')

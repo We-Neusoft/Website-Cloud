@@ -7,6 +7,8 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'cloud.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
+    (r'^qrcode/', include('apps.qrcode.urls', namespace='qrcode')),
+    (r'^oauth/', include('apps.oauth.urls', namespace='oauth')),
 
     url(r'^admin/', include(admin.site.urls)),
 )

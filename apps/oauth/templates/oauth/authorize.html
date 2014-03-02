@@ -1,25 +1,35 @@
-{% extends "we/base.html" %}
 {% load staticfiles %}
-
-{% block title %}登录DreamSpark{% endblock %}
-
-{% block extra_css %}
+<!DOCTYPE html>
+<head>
+  <meta name="description" content="东软云">
+  <meta name="keywords" content="大连东软信息学院, 网络中心, We-Cloud 维云技术小组">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>登录{{ name }} | 东软云</title>
+{% if intranet %}
+  <link href="//lib.dongruanyun.com/bootstrap/3/css/bootstrap.min.css" rel="stylesheet" />
+{% else %}
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" />
+{% endif %}
   <link href="{% static 'oauth/css/cloud-oauth.css' %}" rel="stylesheet" />
-{% endblock %}
-
-{% block content %}
+  <!--[if lt IE 9]>
+    <script src="/js/html5shiv.js"></script>
+    <script src="/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
   <div class="container">
     <form method="post" class="form-horizontal" role="form">
-      {% csrf_token %}
-      <div class="col-xs-offset-1 col-xs-6 col-sm-offset-2 col-xs-6 col-md-offset-1 col-md-5 col-lg-offset-1 col-lg-4">
+      <input type='hidden' name='csrfmiddlewaretoken' value='eoG1aKH5Zfs3IXqSGxcxGmLdzBGolN72' />
+      <div class="col-xs-offset-2 col-xs-8">
         <div class="panel panel-default panel-login">
           <div class="panel-heading">登录 <strong>{{ name }}</strong></div>
           <div class="panel-body">
             <div class="form-group">
-              <div class="input-group col-xs-offset-1 col-xs-10">
-                <input name="username" type="text" class="form-control" id="username" placeholder="邮箱地址" required>
-              </div>
-              <div class="input-group col-xs-offset-1 col-xs-10">
+              <label for="username" class="col-xs-2 control-label">邮箱地址</label>
+              <div class="input-group col-xs-9">
+                <input name="username" type="text" class="form-control" id="username" placeholder="姓名的全拼+13" required>
                 <span class="input-group-addon">@</span>
                 <select name="domain" class="form-control">
                   <option value="nou.com.cn">nou.com.cn</option>
@@ -28,15 +38,16 @@
               </div>
             </div>
             <div class="form-group">
-              <div class="input-group col-xs-offset-1 col-xs-10">
-                <input name="password" type="password" class="form-control" id="password" placeholder="邮箱密码" required>
+              <label for="password" class="col-xs-2 control-label">邮箱密码</label>
+              <div class="input-group col-xs-9">
+                <input name="password" type="password" class="form-control" id="password" placeholder="身份证后6位+手机号码的后4位" required>
               </div>
             </div>
             <div class="form-group">
-              <div class="input-group col-xs-offset-1 col-xs-10">
-                {% if error %}<p class="text-danger">{{ error }}</p>{% endif %}
-                <button type="submit" name="action" value="login" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> 登录</button>
-                <button type="submit" name="action" value="cancel" class="btn btn-default">取消</button>
+              <div class="input-group col-xs-offset-2 col-xs-9">
+                
+                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> 登录</button>
+                <button type="submit" class="btn btn-default">取消</button>
                 <a href="http://mail.nou.com.cn/check.html" target="_blank"><button class="btn btn-link"><span class="glyphicon glyphicon-new-window"></span> 找回邮箱地址</button></a>
               </div>
             </div>
@@ -45,4 +56,22 @@
       </div>
     </form>
   </div>
-{% endblock %}
+{% if html5 %}
+{% if intranet %}
+  <script src="//lib.dongruanyun.com/jquery/jquery2.min.js"></script>
+{% else %}
+  <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+{% endif %}
+{% else %}
+{% if intranet %}
+  <script src="//lib.dongruanyun.com/jquery/jquery1.min.js"></script>
+{% else %}
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+{% endif %}
+{% endif %}
+{% if intranet %}
+  <script src="//lib.dongruanyun.com/bootstrap/3/js/bootstrap.min.js"></script>
+{% else %}
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+{% endif %}
+</body>

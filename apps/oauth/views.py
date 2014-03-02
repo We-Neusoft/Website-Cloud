@@ -13,7 +13,7 @@ from uuid import UUID
 
 from models import AccessToken, AuthorizationCode, Client, RedirectionUri
 from forms import AuthenticationForm, InitializationForm, TokenForm
-from libs.environment import get_environment
+from environment import get_environment
 
 def authorize(request):
     result = get_environment(request)

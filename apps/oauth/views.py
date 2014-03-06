@@ -47,6 +47,7 @@ def authorize(request):
         if issubclass(form.__class__, HttpResponse):
             return form
 
+        result.update({'name': client.name})
         response_type = form.cleaned_data['response_type']
         client_id = form.cleaned_data['client_id']
         redirect_uri = request.session['redirect_uri']

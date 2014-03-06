@@ -21,7 +21,7 @@
 <body>
   <div class="container">
     <form method="post" class="form-horizontal" role="form">
-      <input type='hidden' name='csrfmiddlewaretoken' value='eoG1aKH5Zfs3IXqSGxcxGmLdzBGolN72' />
+      {% csrf_token %}
       <div class="col-xs-offset-2 col-xs-8">
         <div class="panel panel-default panel-login">
           <div class="panel-heading">登录 <strong>{{ name }}</strong></div>
@@ -45,9 +45,9 @@
             </div>
             <div class="form-group">
               <div class="input-group col-xs-offset-2 col-xs-9">
-                
-                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> 登录</button>
-                <button type="submit" class="btn btn-default">取消</button>
+                {% if error %}<p class="text-danger">{{ error }}</p>{% endif %}
+                <button type="submit" name="action" value="login" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> 登录</button>
+                <button type="submit" name="action" value="cancel" class="btn btn-default">取消</button>
                 <a href="http://mail.nou.com.cn/check.html" target="_blank"><button class="btn btn-link"><span class="glyphicon glyphicon-new-window"></span> 找回邮箱地址</button></a>
               </div>
             </div>

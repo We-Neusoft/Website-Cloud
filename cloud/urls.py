@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
     (r'^qrcode/', include('apps.qrcode.urls', namespace='qrcode')),
     (r'^oauth/', include('apps.oauth.urls', namespace='oauth')),
+    (r'^user/', include('apps.user_we.urls', namespace='user')),
 
     url(r'^admin/', include(admin.site.urls)),
 )

@@ -1,0 +1,7 @@
+from django.conf.urls import patterns, url
+
+import views
+
+urlpatterns = patterns('',
+    url(r'^get_info$', views.get_info, name='get_info'),
+)

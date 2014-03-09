@@ -71,7 +71,7 @@ class AdapterMiddleware(object):
         return '<img' + property_pre + 'src="' + self.handle_url(target_app, target_url) + '"' + property_suf + '>'
 
     def handle_url(self, target_app, target_url):
-        if target_app == 'admin':
+        if target_app in ['admin', 'static']:
             return '/' + target_app + target_url
         elif target_app == self.app:
             return target_url

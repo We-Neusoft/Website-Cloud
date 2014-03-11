@@ -13,6 +13,8 @@ from uuid import UUID
 
 from models import AccessToken, AuthorizationCode, Client, RedirectionUri
 from forms import AuthenticationForm, InitializationForm, TokenForm
+
+from libs import oauth_server
 from environment import get_environment
 
 def authorize(request):
@@ -82,7 +84,7 @@ def authorize(request):
 @csrf_exempt
 def token(request):
     # 验证应用端合法性
-    client = authorize_client(request.META.get('HTTP_AUTHORIZATION'))
+    client = oauth_server.authorize(request.META.get('HTTP_AUTHORIZATION'))
     if not client:
         response = HttpResponse('401 Unauthorized', status=401)
         response['WWW-Authenticate'] = 'Basic realm="Please provide your client_id and client_secret."'
@@ -139,21 +141,6 @@ def verify_client(form):
         return HttpResponse('Mismatching redirection URI.'), client
 
     return form, client
-
-def authorize_client(authorization):
-    if not authorization:
-        return None
-
-    method, credentials = authorization.split(' ')
-    # 验证Basic方式
-    if method.lower() == 'basic'.lower():
-        client_id, client_secret = credentials.decode('base64').split(':')
-        try:
-            return Client.objects.get(client_id=client_id, client_secret=UUID(bytes=urlsafe_base64_decode(client_secret)))
-        except (ValueError, Client.DoesNotExist):
-            return None
-    else:
-        return None
 
 def callback_client(uri, state):
     if state:

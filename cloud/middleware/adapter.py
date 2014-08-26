@@ -79,4 +79,4 @@ class AdapterMiddleware(object):
             return '//' + self.handle_domain(target_app) + target_url
 
     def handle_domain(self, target_app):
-        return target_app + '.api.neusoft.edu.cn'
+        return target_app + '.hub.neusoft.edu.cn'

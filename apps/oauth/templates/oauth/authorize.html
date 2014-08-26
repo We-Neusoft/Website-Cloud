@@ -8,9 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>登录{{ name }} | 东软云</title>
 {% if intranet %}
-  <link href="//lib.api.neusoft.edu.cn/bootstrap/3/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="//lib.hub.neusoft.edu.cn/bootstrap/latest/css/bootstrap.min.css" rel="stylesheet" />
 {% else %}
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
 {% endif %}
   <link href="{% static 'oauth/css/cloud-oauth.css' %}" rel="stylesheet" />
   <!--[if lt IE 9]>
@@ -58,20 +58,20 @@
   </div>
 {% if html5 %}
 {% if intranet %}
-  <script src="//lib.api.neusoft.edu.cn/jquery/jquery2.min.js"></script>
+  <script src="//lib.hub.neusoft.edu.cn/jquery/jquery-latest.min.js"></script>
 {% else %}
-  <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+  <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 {% endif %}
 {% else %}
 {% if intranet %}
-  <script src="//lib.api.neusoft.edu.cn/jquery/jquery1.min.js"></script>
+  <script src="//lib.hub.neusoft.edu.cn/jquery/jquery.min.js"></script>
 {% else %}
-  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 {% endif %}
 {% endif %}
 {% if intranet %}
-  <script src="//lib.api.neusoft.edu.cn/bootstrap/3/js/bootstrap.min.js"></script>
+  <script src="//lib.hub.neusoft.edu.cn/bootstrap/latest/js/bootstrap.min.js"></script>
 {% else %}
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 {% endif %}
 </body>
